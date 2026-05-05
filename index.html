@@ -1,0 +1,2453 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#fbfaf7" />
+<meta name="color-scheme" content="light" />
+<meta name="description" content="Roofing AI Audit — stop losing re-roof surveys, leak callouts, and high-ticket roofing enquiries while you're on the roof. Free audit from Blackline AI." />
+<title>Roofing AI Audit for Roofers — Blackline AI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<noscript>
+  <style>
+    #preloader { display: none !important; }
+    h1.headline .line {
+      overflow: visible !important;
+      padding-bottom: 0.12em !important;
+      margin-bottom: 0 !important;
+    }
+    .campaign-pill, .hero-sub, .cta-row, .phone-stage { opacity: 1 !important; transform: none !important; }
+    h1.headline .line > span { opacity: 1 !important; transform: none !important; }
+    .noti, .noti-more, .reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-blur, .reveal-words .w {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  </style>
+</noscript>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   BLACKLINE AI · ROOFING AI AUDIT · v4
+   Warm cream · near-black ink · warm orange accent · Inter only
+   ─────────────────────────────────────────────────────────────────── */
+
+:root {
+  color-scheme: light only;
+
+  --bg: #fbfaf7;
+  --bg-alt: #f4f1ea;
+  --surface: #ffffff;
+
+  --ink: #0f0f0f;
+  --ink-soft: #2a2a28;
+  --ink-dim: #3a3a38;
+  --ink-faint: #6f6a63;
+
+  --line: #e8e3d7;
+  --line-strong: #d6d0c2;
+
+  --accent: #ff5a1f;
+  --accent-dark: #d84410;
+  --accent-light: #fff0e6;
+  --accent-tint: rgba(255, 90, 31, 0.08);
+
+  --signal: #d84410;
+
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --ease: cubic-bezier(0.2, 0.85, 0.15, 1);
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; background: var(--bg); }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'ss01', 'ss03', 'cv11';
+}
+
+::selection { background: var(--accent); color: #fff; }
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.container { max-width: 1360px; margin: 0 auto; padding: 0 32px; position: relative; }
+
+/* ═══ SCROLL PROGRESS ═══ */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  z-index: 10001;
+  transition: width 0.05s linear;
+}
+
+/* ═══ PRELOADER ═══ */
+.preloader {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 10000;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  padding: 0 24px;
+}
+.preloader.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+.preload-text {
+  font-weight: 700;
+  font-size: clamp(32px, 7vw, 68px);
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  overflow: hidden;
+  line-height: 1;
+  text-align: center;
+}
+.preload-text span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: preUp 0.7s cubic-bezier(0.5, 0, 0.1, 1) forwards;
+}
+.preload-text span:nth-child(2) { animation-delay: 0.08s; }
+.preload-text span:nth-child(3) { animation-delay: 0.16s; color: var(--accent); font-style: italic; font-weight: 500; }
+@keyframes preUp { to { transform: translateY(0); } }
+
+/* ═══ TOP BANNER ═══ */
+.campaign-banner {
+  background: var(--bg-alt);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  padding: 11px 32px;
+  position: relative;
+  z-index: 99;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.campaign-banner strong { color: var(--accent); font-weight: 600; }
+.campaign-banner .sep {
+  display: inline-block;
+  width: 4px; height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin: 0 12px;
+  vertical-align: middle;
+}
+
+/* ═══ NAV ═══ */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 18px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s, padding 0.3s;
+  border-bottom: 1px solid transparent;
+  background: rgba(250, 248, 243, 0.7);
+  backdrop-filter: saturate(1.4) blur(16px);
+  -webkit-backdrop-filter: saturate(1.4) blur(16px);
+}
+nav.scrolled { border-bottom-color: var(--line); padding-top: 14px; padding-bottom: 14px; }
+
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-mark {
+  width: 28px; height: 28px;
+  background: var(--ink);
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.logo-mark::after {
+  content: '';
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.logo em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+  margin-left: 2px;
+}
+
+.nav-cta {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--bg);
+  background: var(--ink);
+  padding: 10px 18px;
+  border-radius: 999px;
+  transition: all 0.25s var(--ease-out);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+.nav-cta .arrow { display: inline-block; transition: transform 0.25s; font-size: 13px; }
+.nav-cta:hover .arrow { transform: translateX(3px); }
+
+/* ═══ HERO ═══ */
+.hero {
+  padding: 60px 32px 0;
+  min-height: calc(100vh - 34px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.campaign-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px 8px 10px;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  opacity: 0;
+  transform: translateY(15px);
+}
+.loaded .campaign-pill { animation: fadeUp 0.8s var(--ease) 0.1s forwards; }
+.campaign-pill .dot {
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(255, 90, 31, 0.5);
+  animation: pulseOrange 2s infinite;
+}
+@keyframes pulseOrange {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 90, 31, 0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 90, 31, 0); }
+}
+
+.hero-body {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: center;
+  flex-grow: 1;
+  padding-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+h1.headline {
+  font-weight: 800;
+  font-size: clamp(48px, 8vw, 112px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 32px;
+  color: var(--ink);
+}
+h1.headline .line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.08em;
+  white-space: nowrap;
+}
+.headline-settled h1.headline .line {
+  overflow: visible;
+  padding-bottom: 0.1em;
+  margin-bottom: 0;
+}
+h1.headline .line > span {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+.loaded h1.headline .line:nth-child(1) > span { animation: slideUp 0.95s var(--ease) 0.22s forwards; }
+.loaded h1.headline .line:nth-child(2) > span { animation: slideUp 0.95s var(--ease) 0.34s forwards; }
+.loaded h1.headline .line:nth-child(3) > span { animation: slideUp 0.95s var(--ease) 0.46s forwards; }
+@keyframes slideUp { to { transform: translateY(0); opacity: 1; } }
+
+/* Rotator: invisible sizer sets width to longest word, visible text sits absolutely over it -> no layout jerk */
+h1.headline .rotator-wrap {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent);
+}
+h1.headline .rotator-sizer {
+  display: inline-block;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+h1.headline .rotator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  transition: opacity 0.45s ease, transform 0.45s var(--ease);
+  will-change: transform, opacity;
+}
+
+.hero-sub {
+  font-size: 19px;
+  max-width: 560px;
+  margin-bottom: 36px;
+  color: var(--ink-dim);
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(15px);
+}
+.loaded .hero-sub { animation: fadeUp 0.9s var(--ease) 0.85s forwards; }
+.hero-sub strong { font-weight: 600; color: var(--ink); }
+
+.cta-row {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  opacity: 0; transform: translateY(15px);
+}
+.loaded .cta-row { animation: fadeUp 0.9s var(--ease) 1.02s forwards; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 26px;
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+  min-height: 54px;
+  box-shadow: 0 4px 14px -4px rgba(15, 15, 15, 0.25);
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.5, 0, 0.1, 1);
+  z-index: 0;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -6px rgba(255, 90, 31, 0.4); }
+.btn:hover::before { transform: translateY(0); }
+.btn span.lbl { position: relative; z-index: 1; }
+.btn .arr {
+  position: relative; z-index: 1;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--ink);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  transition: transform 0.3s;
+}
+.btn:hover .arr { transform: rotate(-45deg); }
+
+.hero-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+/* ═══ HERO PHONE (product shot, no cheese) ═══ */
+.phone-stage {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 3 / 4.4;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.loaded .phone-stage { animation: stageIn 1.3s var(--ease) 0.7s forwards; }
+@keyframes stageIn { to { opacity: 1; transform: translateY(0); } }
+
+/* Ambient glow behind phone */
+.phone-glow {
+  position: absolute;
+  width: 120%; height: 110%;
+  top: -5%; left: -10%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 90, 31, 0.12), transparent 60%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.phone {
+  position: relative;
+  width: 270px;
+  aspect-ratio: 9 / 19.5;
+  background: linear-gradient(145deg, #2a2926 0%, #1a1917 50%, #0f0e0d 100%);
+  border-radius: 42px;
+  padding: 6px;
+  box-shadow:
+    0 40px 80px -20px rgba(15, 15, 15, 0.25),
+    0 20px 40px -15px rgba(15, 15, 15, 0.2),
+    0 0 0 1.5px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+  z-index: 2;
+  transform-origin: center center;
+  will-change: transform;
+  animation: phoneFloat 7s ease-in-out infinite;
+}
+@keyframes phoneFloat {
+  0%   { transform: translateY(0) rotate(-0.8deg); }
+  25%  { transform: translateY(-6px) rotate(0.3deg); }
+  50%  { transform: translateY(-10px) rotate(0.8deg); }
+  75%  { transform: translateY(-4px) rotate(0deg); }
+  100% { transform: translateY(0) rotate(-0.8deg); }
+}
+.phone-glow {
+  animation: glowPulse 7s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+.phone-stage.buzzing .phone {
+  box-shadow:
+    0 42px 86px -18px rgba(15, 15, 15, 0.28),
+    0 24px 44px -14px rgba(15, 15, 15, 0.24),
+    0 0 0 1.5px rgba(255, 90, 31, 0.26),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+.phone-stage.buzzing .phone-screen {
+  animation: phoneBuzz 0.32s linear 3;
+}
+.phone-stage.buzzing .phone-glow {
+  animation: glowPulse 7s ease-in-out infinite, buzzGlow 0.95s var(--ease-out);
+}
+.phone-stage.buzzing .noti:first-child {
+  animation: buzzNotiPulse 0.85s var(--ease-out);
+}
+.phone-stage.buzzing .noti:first-child .noti-icon {
+  animation: buzzIconBlink 0.48s ease-in-out 2;
+}
+@keyframes phoneBuzz {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-2px); }
+  30% { transform: translateX(2px); }
+  45% { transform: translateX(-1.6px); }
+  60% { transform: translateX(1.6px); }
+  75% { transform: translateX(-0.8px); }
+}
+@keyframes buzzGlow {
+  0% { opacity: 0.82; transform: scale(1); }
+  40% { opacity: 1; transform: scale(1.09); }
+  100% { opacity: 0.9; transform: scale(1.03); }
+}
+@keyframes buzzNotiPulse {
+  0%, 100% { transform: translateX(0) scale(1); }
+  25% { transform: translateX(-4px) scale(1.015); }
+  60% { transform: translateX(0) scale(1.04); }
+}
+@keyframes buzzIconBlink {
+  0%, 100% { background: var(--signal); }
+  50% { background: var(--accent); }
+}
+
+.phone-screen {
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 90, 31, 0.1), transparent 50%),
+    linear-gradient(180deg, #1a1814 0%, #0f0d0a 50%, #141210 100%);
+  border-radius: 36px;
+  position: relative;
+  overflow: hidden;
+  padding: 14px 14px 18px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+/* iPhone dynamic island */
+.phone-island {
+  position: absolute;
+  top: 10px; left: 50%;
+  transform: translateX(-50%);
+  width: 100px; height: 28px;
+  background: #000;
+  border-radius: 99px;
+  z-index: 3;
+}
+
+/* Status bar */
+.phone-status {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: -apple-system, 'SF Pro Display', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  padding: 4px 18px 0;
+  margin-top: 6px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 4;
+  font-feature-settings: 'tnum';
+}
+.phone-status .icons {
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.phone-status .icons svg { width: 14px; height: 10px; color: #fff; }
+
+/* Date block */
+.phone-date {
+  text-align: center;
+  margin-bottom: 14px;
+  opacity: 0.9;
+  font-family: -apple-system, 'SF Pro Display', sans-serif;
+}
+.phone-day {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.02em;
+  margin-bottom: 2px;
+}
+.phone-time-big {
+  font-weight: 300;
+  font-size: 58px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #fff;
+  font-feature-settings: 'tnum';
+}
+
+/* Notification stack */
+.noti-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+.noti {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transform: translateX(20px) scale(0.96);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.noti.visible { opacity: 1; transform: translateX(0) scale(1); }
+.noti-icon {
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  background: var(--signal);
+  display: grid; place-items: center;
+  color: #fff;
+}
+.noti-icon svg { width: 13px; height: 13px; }
+.noti-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.noti-title {
+  font-family: -apple-system, 'SF Pro Display', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.noti-sub {
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0;
+  margin-top: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.noti-time {
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  font-size: 10px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 500;
+  align-self: start;
+  padding-top: 2px;
+  white-space: nowrap;
+}
+
+/* "+more today" row */
+.noti-more {
+  text-align: center;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 0.5px solid rgba(255,255,255,0.08);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease) 0.8s;
+}
+.noti-more.visible { opacity: 1; }
+
+/* Bottom unlock hint */
+.phone-unlock {
+  margin-top: auto;
+  text-align: center;
+  padding-top: 20px;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 400;
+}
+.phone-home {
+  width: 110px; height: 4px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 99px;
+  margin: 10px auto 2px;
+}
+
+/* ═══ SKYLINE (parallax) ═══ */
+.hero-skyline {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0.08;
+  z-index: 1;
+  will-change: transform;
+}
+.hero-skyline svg { width: 100%; height: auto; display: block; }
+.hero-skyline .building {
+  transform-origin: bottom;
+  animation: risIn 1.4s var(--ease) both;
+}
+.loaded .hero-skyline .building:nth-child(1) { animation-delay: 1.1s; }
+.loaded .hero-skyline .building:nth-child(2) { animation-delay: 1.18s; }
+.loaded .hero-skyline .building:nth-child(3) { animation-delay: 1.26s; }
+.loaded .hero-skyline .building:nth-child(4) { animation-delay: 1.34s; }
+.loaded .hero-skyline .building:nth-child(5) { animation-delay: 1.42s; }
+.loaded .hero-skyline .building:nth-child(6) { animation-delay: 1.5s; }
+.loaded .hero-skyline .building:nth-child(7) { animation-delay: 1.58s; }
+.loaded .hero-skyline .building:nth-child(8) { animation-delay: 1.66s; }
+.loaded .hero-skyline .building:nth-child(9) { animation-delay: 1.74s; }
+@keyframes risIn {
+  from { transform: scaleY(0); opacity: 0; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+/* ═══ MARQUEE ═══ */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 22px 0;
+  position: relative;
+  z-index: 3;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 45s linear infinite;
+  gap: 56px;
+  will-change: transform;
+}
+.marquee-track .item {
+  font-weight: 600;
+  font-size: clamp(26px, 4.8vw, 52px);
+  letter-spacing: -0.025em;
+  display: inline-flex;
+  align-items: center;
+  gap: 56px;
+  white-space: nowrap;
+}
+.marquee-track .item em {
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 500;
+}
+.marquee-track .item::after {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+/* ═══ SECTION HEAD ═══ */
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 80px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--ink);
+}
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+.section-num strong { color: var(--ink); font-weight: 600; }
+.section-title {
+  font-weight: 700;
+  font-size: clamp(38px, 5.5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.section-title em { font-style: italic; font-weight: 500; color: var(--accent); }
+
+/* ═══ PROBLEM ═══ */
+.problem {
+  padding: 130px 32px 100px;
+  position: relative;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--line);
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--line-strong);
+}
+.stat-row:last-of-type { border-bottom: none; }
+.stat-row:nth-child(even) { direction: rtl; }
+.stat-row:nth-child(even) > * { direction: ltr; }
+.stat-num {
+  font-weight: 800;
+  font-size: clamp(78px, 14vw, 220px);
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+  position: relative;
+  display: inline-block;
+  will-change: transform, opacity;
+  font-feature-settings: 'tnum';
+}
+.stat-num .unit {
+  font-size: 0.4em;
+  font-weight: 500;
+  color: var(--accent);
+  vertical-align: super;
+  letter-spacing: -0.02em;
+  font-style: italic;
+}
+.stat-num.counter {
+  will-change: transform, opacity;
+}
+
+.stat-copy {
+  display: flex; flex-direction: column; justify-content: center;
+  padding-left: 40px;
+  padding-top: 20px;
+}
+.stat-copy .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 600;
+}
+.stat-copy .tag::before { content: ''; width: 20px; height: 1.5px; background: var(--accent); }
+.stat-copy h3 {
+  font-weight: 600;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  max-width: 22ch;
+  color: var(--ink);
+}
+.stat-copy p {
+  font-size: 17px;
+  color: var(--ink-dim);
+  line-height: 1.55;
+  max-width: 38ch;
+}
+.stat-row:nth-child(even) .stat-copy { padding-left: 0; padding-right: 40px; text-align: right; }
+.stat-row:nth-child(even) .stat-copy h3,
+.stat-row:nth-child(even) .stat-copy p { margin-left: auto; }
+.stat-row:nth-child(even) .stat-copy .tag { flex-direction: row-reverse; }
+
+/* ═══ ROOFING CAMPAIGN SECTION ═══ */
+.campaign {
+  padding: 130px 32px 110px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+.campaign-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+.campaign-heading {
+  position: sticky;
+  top: 100px;
+}
+.campaign-heading .section-num { margin-bottom: 24px; display: block; }
+.campaign-heading h2 {
+  font-weight: 700;
+  font-size: clamp(38px, 5.5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.campaign-heading h2 em { font-style: italic; font-weight: 500; color: var(--accent); }
+.campaign-heading p {
+  font-size: 18px;
+  color: var(--ink-dim);
+  max-width: 44ch;
+  line-height: 1.55;
+}
+.campaign-heading p strong { color: var(--ink); font-weight: 600; }
+
+.campaign-facts { display: flex; flex-direction: column; gap: 0; }
+.cfact {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+.cfact:first-child { border-top: 1px solid var(--line); }
+.cfact:last-child { border-bottom: 1px solid var(--ink); }
+.cfact-num {
+  font-weight: 700;
+  font-size: clamp(32px, 3.5vw, 48px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--accent);
+  font-feature-settings: 'tnum';
+}
+.cfact-body {
+  padding-top: 4px;
+}
+.cfact h3 {
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+.cfact p {
+  font-size: 15px;
+  color: var(--ink-dim);
+  line-height: 1.5;
+}
+.campaign-deadline {
+  margin-top: 36px;
+  padding: 20px 24px;
+  background: var(--accent-light);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--accent-dark);
+}
+.campaign-deadline svg { flex-shrink: 0; }
+.campaign-deadline-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-bottom: 2px;
+}
+.campaign-deadline-val {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+/* ═══ PULL QUOTE ═══ */
+.pullquote {
+  padding: 140px 32px;
+  background: var(--bg-alt);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+.pullquote::before {
+  content: '"';
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 800;
+  font-style: italic;
+  font-size: 240px;
+  color: var(--accent);
+  opacity: 0.08;
+  line-height: 1;
+  font-family: serif;
+}
+.pullquote blockquote {
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(30px, 5.2vw, 64px);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  max-width: 20ch;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  color: var(--ink);
+}
+.pullquote blockquote em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+.pullquote cite {
+  display: block;
+  margin-top: 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+}
+.pullquote cite strong { color: var(--ink); font-weight: 600; }
+
+/* ═══ SOLUTION ═══ */
+.solution {
+  padding: 130px 32px 110px;
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+.solution-canvas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 64px;
+}
+.solution-sticky {
+  position: sticky;
+  top: 90px;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(145deg, #1a1917 0%, #2a2926 100%);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 30px 60px -30px rgba(15, 15, 15, 0.2);
+}
+.solution-sticky::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(255, 90, 31, 0.15), transparent 55%);
+}
+.phone-demo {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 78%;
+  max-width: 340px;
+  background: var(--bg);
+  border-radius: 28px;
+  padding: 18px 16px;
+  box-shadow: 0 20px 60px -15px rgba(0,0,0,0.35);
+}
+.phone-demo-notch { width: 44px; height: 4px; background: rgba(0,0,0,0.12); border-radius: 99px; margin: 0 auto 14px; }
+.phone-demo-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 4px 2px 14px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 14px;
+}
+.phone-demo-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 13px;
+  letter-spacing: -0.02em;
+}
+.phone-demo-who { font-weight: 700; font-size: 14px; letter-spacing: -0.01em; color: var(--ink); }
+.phone-demo-time { font-size: 11px; color: var(--ink-faint); margin-top: 1px; }
+.phone-demo-tag {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  padding: 4px 8px;
+  border-radius: 99px;
+  font-weight: 600;
+}
+.phone-demo-body { min-height: 260px; position: relative; }
+.phone-scene { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; }
+.phone-scene.active { opacity: 1; }
+.msg {
+  padding: 9px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.45;
+  margin-bottom: 7px;
+  max-width: 86%;
+}
+.msg-in { background: var(--line); color: var(--ink); border-bottom-left-radius: 4px; }
+.msg-out { background: var(--ink); color: var(--bg); margin-left: auto; border-bottom-right-radius: 4px; }
+
+.solution-steps { display: flex; flex-direction: column; }
+.step {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+  opacity: 0.4;
+  transition: opacity 0.4s;
+  cursor: pointer;
+}
+.step.active { opacity: 1; }
+.step:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 8px;
+  border-radius: 8px;
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+.step h3 {
+  font-weight: 700;
+  font-size: clamp(26px, 3.2vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+.step h3 em { font-style: italic; color: var(--accent); font-weight: 500; }
+.step p { font-size: 17px; color: var(--ink-dim); line-height: 1.55; max-width: 42ch; }
+
+/* ═══ CTA (light, big) ═══ */
+.mega-cta {
+  background: var(--bg-alt);
+  color: var(--ink);
+  padding: 140px 32px 120px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  --cta-drift: 0px;
+  --cta-glow-shift: 0px;
+}
+.mega-cta::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255, 90, 31, 0.18), transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, calc(50px + var(--cta-glow-shift)), 0) scale(0.88);
+  transition: opacity 1.1s var(--ease), transform 1.35s var(--ease);
+}
+.mega-cta.in::before {
+  opacity: 1;
+  transform: translate3d(0, var(--cta-glow-shift), 0) scale(1);
+}
+.mega-cta > .container {
+  transform: translate3d(0, calc(48px + var(--cta-drift)), 0) scale(0.985);
+  opacity: 0;
+  transition: transform 1.1s var(--ease), opacity 0.9s ease;
+}
+.mega-cta.in > .container {
+  opacity: 1;
+  transform: translate3d(0, var(--cta-drift), 0) scale(1);
+}
+.cta-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+  display: inline-flex; align-items: center; gap: 12px;
+  position: relative; z-index: 1;
+  font-weight: 600;
+}
+.cta-kicker::before { content: ''; width: 32px; height: 1px; background: var(--accent); }
+.mega-cta h2 {
+  font-weight: 700;
+  font-size: clamp(44px, 8.5vw, 140px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  margin-bottom: 36px;
+  max-width: 15ch;
+  position: relative; z-index: 1;
+}
+.mega-cta h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+.mega-cta p {
+  font-size: 20px;
+  max-width: 52ch;
+  margin-bottom: 44px;
+  color: var(--ink-dim);
+  position: relative; z-index: 1;
+  line-height: 1.5;
+}
+.mega-cta .btn { position: relative; z-index: 1; }
+.mega-cta .cta-row { margin-bottom: 72px; }
+
+.cta-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line-strong);
+  padding-top: 36px;
+  position: relative; z-index: 1;
+  transform: translate3d(0, calc(24px + (var(--cta-drift) * -0.35)), 0);
+  transition: transform 1.1s var(--ease) 0.1s;
+}
+.mega-cta.in .cta-facts {
+  transform: translate3d(0, calc(var(--cta-drift) * -0.35), 0);
+}
+.cta-facts > div { padding: 0 24px; border-right: 1px solid var(--line-strong); }
+.cta-facts > div:first-child { padding-left: 0; }
+.cta-facts > div:last-child { border-right: none; padding-right: 0; }
+.cta-facts-num {
+  font-weight: 700;
+  font-size: clamp(32px, 4.5vw, 56px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-feature-settings: 'tnum';
+}
+.cta-facts-num em { font-style: italic; color: var(--accent); font-weight: 500; }
+.cta-facts-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* ═══ FAQ ═══ */
+.faq {
+  padding: 120px 32px 130px;
+  background: var(--bg);
+}
+.faq-list {
+  max-width: 1000px;
+  margin: 56px auto 0;
+  border-top: 1px solid var(--ink);
+}
+details {
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0;
+  cursor: pointer;
+}
+details summary {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 60px 1fr 40px;
+  gap: 28px;
+  align-items: center;
+}
+details summary::-webkit-details-marker { display: none; }
+.faq-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  align-self: baseline;
+  padding-top: 6px;
+  font-weight: 600;
+}
+.faq-q {
+  font-weight: 600;
+  font-size: clamp(19px, 2.2vw, 26px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  transition: color 0.2s;
+  align-self: baseline;
+}
+details:hover .faq-q { color: var(--accent); }
+.faq-icon {
+  width: 34px; height: 34px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  justify-self: end;
+  transition: all 0.35s var(--ease);
+  position: relative;
+  flex-shrink: 0;
+}
+.faq-icon::before, .faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--ink);
+  transition: transform 0.35s var(--ease), background 0.35s;
+}
+.faq-icon::before { width: 12px; height: 1.5px; }
+.faq-icon::after { width: 1.5px; height: 12px; }
+details[open] .faq-icon { background: var(--accent); border-color: var(--accent); transform: rotate(90deg); }
+details[open] .faq-icon::before { background: #fff; }
+details[open] .faq-icon::after { background: #fff; transform: scaleY(0); }
+.faq-a {
+  padding: 18px 0 0 88px;
+  color: var(--ink-dim);
+  font-size: 16.5px;
+  line-height: 1.6;
+  max-width: 64ch;
+}
+
+/* ═══ FOOTER ═══ */
+footer {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 80px 32px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.footer-skyline {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  width: 100%;
+  opacity: 0.18;
+  pointer-events: none;
+}
+.footer-skyline svg { width: 100%; height: auto; display: block; }
+.footer-huge {
+  font-weight: 800;
+  font-size: clamp(70px, 20vw, 340px);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: #fff;
+  opacity: 0.04;
+  position: absolute;
+  bottom: -0.1em;
+  left: 32px; right: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+}
+.footer-huge em { font-style: italic; font-weight: 500; }
+.footer-top {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 56px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-addr {
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+  max-width: 32ch;
+  color: rgba(255,255,255,0.85);
+}
+.footer-addr em { font-style: italic; color: var(--accent); font-weight: 600; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.footer-links a {
+  color: var(--bg);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 6px 0;
+  position: relative;
+  transition: padding 0.25s, color 0.25s;
+  font-weight: 600;
+}
+.footer-links a::before {
+  content: '→';
+  position: absolute;
+  left: -24px;
+  opacity: 0;
+  transition: all 0.25s;
+  color: var(--accent);
+}
+.footer-links a:hover { padding-left: 24px; color: var(--accent); }
+.footer-links a:hover::before { opacity: 1; left: 0; }
+.footer-bottom {
+  position: relative; z-index: 1;
+  display: flex; justify-content: space-between; flex-wrap: wrap;
+  gap: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  padding-bottom: calc(20px + var(--safe-bottom));
+  font-weight: 500;
+}
+
+/* ═══ REVEAL ═══ */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-scale { opacity: 0; transform: scale(0.96); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal-scale.in { opacity: 1; transform: scale(1); }
+
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal-left.in { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal-right.in { opacity: 1; transform: translateX(0); }
+
+/* blur-lift reveal */
+.reveal-blur { opacity: 0; transform: translateY(20px); filter: blur(8px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease), filter 1.1s var(--ease); }
+.reveal-blur.in { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+/* Word-by-word reveal for pull quote */
+.reveal-words .w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.8s var(--ease);
+  will-change: transform, opacity;
+}
+.reveal-words.in .w { opacity: 1; transform: translateY(0); }
+
+/* Mask line-reveal (for divider-like entrances on section rules) */
+.reveal-line { position: relative; }
+.reveal-line::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 1px;
+  background: var(--ink);
+  width: 0;
+  transition: width 1.1s var(--ease);
+}
+.reveal-line.in::after { width: 100%; }
+
+/* Campaign pill subtle scroll-drift */
+.drift { will-change: transform; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ─────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .hero-body { grid-template-columns: 1fr; gap: 60px; padding-bottom: 100px; }
+  .phone-stage { max-width: 300px; }
+  .section-head { grid-template-columns: 1fr; gap: 20px; align-items: start; margin-bottom: 56px; }
+  .campaign-inner { grid-template-columns: 1fr; gap: 48px; }
+  .campaign-heading { position: static; }
+  .solution-canvas { grid-template-columns: 1fr; gap: 40px; }
+  .solution-sticky { position: relative; top: auto; max-width: 380px; margin: 0 auto; }
+  .cta-facts { grid-template-columns: 1fr 1fr; gap: 28px 0; }
+  .cta-facts > div { border-right: none; padding: 0 0 24px; border-bottom: 1px solid var(--line-strong); }
+  .cta-facts > div:nth-child(odd) { padding-right: 16px; border-right: 1px solid var(--line-strong); padding-left: 0; }
+  .cta-facts > div:nth-child(even) { padding-left: 16px; padding-right: 0; }
+  .cta-facts > div:nth-child(3), .cta-facts > div:nth-child(4) { border-bottom: none; padding-bottom: 0; }
+  .footer-top { grid-template-columns: 1fr; gap: 36px; }
+}
+
+@media (max-width: 720px) {
+  html { font-size: 16px; }
+  .container { padding: 0 20px; }
+  .campaign-banner { padding: 10px 16px; font-size: 10px; }
+  .campaign-banner .sep { margin: 0 8px; }
+  nav { padding: 14px 20px; }
+  nav.scrolled { padding: 12px 20px; }
+  .logo { font-size: 18px; }
+  .logo-mark { width: 26px; height: 26px; }
+  .nav-cta { padding: 8px 14px; font-size: 12px; }
+  .nav-cta .arrow { display: none; }
+
+  /* HERO mobile */
+  .hero { padding: 40px 20px 0; min-height: auto; }
+  .campaign-pill { margin-bottom: 28px; font-size: 10px; padding: 7px 12px 7px 9px; gap: 8px; }
+  .campaign-pill .dot { width: 6px; height: 6px; }
+  .hero-body { gap: 44px; padding-bottom: 80px; }
+  h1.headline {
+    font-size: clamp(38px, 11vw, 56px);
+    line-height: 0.98;
+    margin-bottom: 24px;
+    letter-spacing: -0.03em;
+  }
+  h1.headline .line {
+    padding-bottom: 0.24em;
+    margin-bottom: -0.14em;
+  }
+  .headline-settled h1.headline .line {
+    padding-bottom: 0.12em;
+    margin-bottom: 0;
+  }
+  .hero-sub { font-size: 16px; margin-bottom: 28px; line-height: 1.5; }
+  .hero-note { font-size: 10.5px; }
+  .btn { padding: 15px 22px; font-size: 14px; min-height: 50px; }
+  .cta-row { flex-direction: column; align-items: stretch; gap: 14px; }
+  .cta-row .btn { justify-content: center; }
+  .cta-row .hero-note { text-align: center; }
+
+  /* Phone mobile */
+  .phone-stage { max-width: 260px; aspect-ratio: 3/4.5; }
+  .phone { width: 230px; border-radius: 36px; padding: 5px; }
+  .phone-screen { border-radius: 31px; padding: 12px 12px 14px; }
+  .phone-island { width: 80px; height: 22px; top: 8px; }
+  .phone-status { font-size: 12px; padding: 2px 14px 0; margin-top: 4px; margin-bottom: 28px; }
+  .phone-day { font-size: 11px; }
+  .phone-time-big { font-size: 44px; }
+  .noti { padding: 8px 10px; gap: 8px; grid-template-columns: 22px 1fr auto; border-radius: 11px; }
+  .noti-icon { width: 22px; height: 22px; border-radius: 6px; }
+  .noti-icon svg { width: 11px; height: 11px; }
+  .noti-title { font-size: 10.5px; }
+  .noti-sub { font-size: 9.5px; }
+  .noti-time { font-size: 9px; padding-top: 1px; }
+  .noti-more { font-size: 10px; margin-top: 8px; padding-top: 8px; }
+  .phone-unlock { font-size: 10px; padding-top: 14px; }
+  .phone-home { width: 90px; height: 3px; margin-top: 8px; }
+  .phone-stage.buzzing .phone-screen {
+    animation-duration: 0.28s;
+  }
+
+  .hero-skyline { opacity: 0.07; }
+
+  .marquee { padding: 16px 0; }
+  .marquee-track { gap: 36px; }
+  .marquee-track .item { gap: 36px; font-size: clamp(22px, 7vw, 36px); }
+
+  .problem, .solution, .faq, .campaign { padding: 80px 20px; }
+  .pullquote { padding: 90px 20px; }
+  .mega-cta { padding: 100px 20px 80px; }
+  footer { padding: 56px 20px 32px; }
+
+  .section-head { margin-bottom: 48px; padding-bottom: 18px; gap: 16px; }
+  .section-title { font-size: clamp(32px, 9vw, 48px); letter-spacing: -0.03em; }
+
+  .stat-row, .stat-row:nth-child(even) {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 16px;
+    padding: 40px 0;
+  }
+  .stat-row:nth-child(even) > * { direction: ltr; }
+  .stat-copy, .stat-row:nth-child(even) .stat-copy { padding: 0; text-align: left; }
+  .stat-row:nth-child(even) .stat-copy h3,
+  .stat-row:nth-child(even) .stat-copy p { margin-left: 0; }
+  .stat-row:nth-child(even) .stat-copy .tag { flex-direction: row; }
+  .stat-num { font-size: clamp(80px, 24vw, 130px); line-height: 0.88; }
+  .stat-copy h3 { font-size: clamp(20px, 5.5vw, 24px); }
+  .stat-copy p { font-size: 15.5px; }
+
+  .campaign-heading h2 { font-size: clamp(32px, 9vw, 48px); margin-bottom: 24px; }
+  .campaign-heading p { font-size: 16px; }
+  .cfact { grid-template-columns: 60px 1fr; gap: 16px; padding: 22px 0; }
+  .cfact-num { font-size: clamp(26px, 7vw, 36px); }
+  .cfact h3 { font-size: clamp(17px, 4.5vw, 20px); }
+  .cfact p { font-size: 14px; }
+  .campaign-deadline { padding: 16px 18px; gap: 12px; margin-top: 28px; }
+  .campaign-deadline-val { font-size: 14px; }
+
+  .pullquote blockquote { font-size: clamp(26px, 8vw, 40px); }
+  .pullquote::before { font-size: 160px; top: 20px; }
+  .pullquote cite { margin-top: 24px; font-size: 10.5px; }
+
+  .solution-canvas { margin-top: 44px; gap: 32px; }
+  .solution-sticky {
+    position: sticky;
+    top: 80px;
+    max-width: 260px;
+    aspect-ratio: 3 / 4;
+  }
+  .phone-demo { width: 88%; padding: 12px; border-radius: 24px; }
+  .phone-demo-notch { width: 38px; height: 3px; margin-bottom: 10px; }
+  .phone-demo-header { padding-bottom: 10px; margin-bottom: 12px; gap: 10px; }
+  .phone-demo-avatar { width: 32px; height: 32px; font-size: 11px; }
+  .phone-demo-who { font-size: 12px; }
+  .phone-demo-time { font-size: 10px; }
+  .phone-demo-tag { font-size: 8px; padding: 3px 6px; }
+  .phone-demo-body { min-height: 200px; }
+  .msg { font-size: 11.5px; padding: 8px 10px; margin-bottom: 5px; border-radius: 11px; }
+  .step { padding: 26px 0; }
+  .step h3 { font-size: clamp(22px, 6.5vw, 30px); }
+  .step p { font-size: 15.5px; }
+
+  .mega-cta h2 { font-size: clamp(36px, 11vw, 56px); margin-bottom: 24px; max-width: none; }
+  .mega-cta p { font-size: 17px; margin-bottom: 32px; }
+  .mega-cta .cta-row { margin-bottom: 52px; }
+  .cta-facts { grid-template-columns: 1fr 1fr; padding-top: 24px; gap: 20px 0; }
+  .cta-facts-num { font-size: clamp(28px, 10vw, 44px); }
+  .cta-facts-label { font-size: 10px; }
+
+  .faq-list { margin-top: 36px; }
+  details { padding: 22px 0; }
+  details summary { grid-template-columns: 36px 1fr 28px; gap: 14px; }
+  .faq-num { font-size: 10px; }
+  .faq-q { font-size: clamp(16.5px, 4.6vw, 20px); }
+  .faq-icon { width: 28px; height: 28px; }
+  .faq-icon::before { width: 10px; }
+  .faq-icon::after { height: 10px; }
+  .faq-a { padding: 14px 0 0 50px; font-size: 15px; }
+
+  .footer-top { padding-bottom: 44px; margin-bottom: 32px; }
+  .footer-addr { font-size: 17px; }
+  .footer-bottom { font-size: 9.5px; }
+  .footer-huge { font-size: clamp(80px, 28vw, 140px); }
+}
+
+@media (max-width: 380px) {
+  h1.headline { font-size: 38px; }
+  .stat-num { font-size: 80px; }
+  .section-title { font-size: 28px; }
+}
+
+@media (max-width: 560px) {
+  h1.headline {
+    font-size: clamp(34px, 10vw, 42px);
+  }
+  h1.headline .line:last-child {
+    white-space: normal;
+  }
+  h1.headline .line:last-child > span {
+    display: block;
+    white-space: normal;
+  }
+  h1.headline .line:last-child .rotator-wrap {
+    display: block;
+    margin-top: 0.02em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-track { animation: none; }
+  .phone { animation: none; }
+  .scroll-progress { display: none; }
+}
+
+/* Force light palette regardless of OS dark-mode preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #fbfaf7;
+    --bg-alt: #f4f1ea;
+    --surface: #ffffff;
+    --ink: #0f0f0f;
+    --ink-soft: #2a2a28;
+    --ink-dim: #3a3a38;
+    --ink-faint: #6f6a63;
+    --line: #e8e3d7;
+    --line-strong: #d6d0c2;
+  }
+  html, body { background: #fbfaf7; color: #0f0f0f; }
+}
+</style>
+</head>
+<body id="top">
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="preloader" id="preloader">
+  <div class="preload-text">
+    <span>Roofing</span> <span>AI</span> <span>Audit.</span>
+  </div>
+</div>
+
+<!-- TOP BANNER -->
+<div class="campaign-banner">
+  On a <strong>mission</strong> to stop roofers losing high-ticket calls
+  <span class="sep"></span>
+  50 free audits available
+  <span class="sep"></span>
+  Q2 2026
+</div>
+
+<nav id="nav">
+  <a href="#top" class="logo">
+    <span class="logo-mark"></span>
+    Blackline <em>AI</em>
+  </a>
+  <a href="https://pages.pubhtml.com/tom-richman/2CtDQDhLhY" target="_blank" rel="noopener" class="nav-cta">
+    Book audit <span class="arrow">→</span>
+  </a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="container">
+
+    <div class="hero-body">
+      <div>
+        <div class="campaign-pill">
+          <span class="dot"></span>
+          On a mission · Turning missed roofing calls into booked jobs
+        </div>
+        <h1 class="headline">
+          <span class="line"><span>The phone's</span></span>
+          <span class="line"><span>ringing.</span></span>
+          <span class="line"><span>You're&nbsp;<span class="rotator-wrap"><span class="rotator-sizer" aria-hidden="true">stripping back felt.</span><span class="rotator" id="rotator">up a ladder.</span></span></span></span>
+        </h1>
+        <p class="hero-sub">
+          Every call you can't answer is a leak repair, a survey booking, a fascia-and-gutter job, or a full re-roof drifting to the next roofer on Google.
+          <strong>We answer the phone so you don't have to.</strong> 24/7, qualifying roofing enquiries properly, filtering tyre-kickers, and booking the jobs you actually want into your diary.
+        </p>
+        <div class="cta-row">
+          <a href="https://pages.pubhtml.com/tom-richman/2CtDQDhLhY" target="_blank" rel="noopener" class="btn">
+            <span class="lbl">Get my free Roofing AI Audit</span>
+            <span class="arr">↗</span>
+          </a>
+          <span class="hero-note">15 mins · No card · No sales spiel</span>
+        </div>
+      </div>
+
+      <!-- STATIC PHONE (product shot) -->
+      <div class="phone-stage">
+        <div class="phone-glow"></div>
+
+        <div class="phone">
+          <div class="phone-island"></div>
+          <div class="phone-screen">
+            <div class="phone-status">
+              <span>9:41</span>
+              <span class="icons">
+                <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="5" y="5" width="3" height="7" rx="0.5"/><rect x="10" y="2" width="3" height="10" rx="0.5"/><rect x="15" y="0" width="3" height="12" rx="0.5"/></svg>
+                <svg viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="1" width="16.5" height="10" rx="2.5"/><rect x="2" y="3" width="13" height="6" rx="1" fill="currentColor" stroke="none"/><rect x="18" y="4.5" width="1.5" height="3" rx="0.5" fill="currentColor" stroke="none"/></svg>
+              </span>
+            </div>
+
+            <div class="phone-date">
+              <div class="phone-day">Thursday, 17 April</div>
+              <div class="phone-time-big">9:41</div>
+            </div>
+
+            <div class="noti-stack" id="notiStack">
+              <div class="noti" data-delay="0">
+                <div class="noti-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="noti-body">
+                  <span class="noti-title">Missed call · £11,600</span>
+                  <span class="noti-sub">Full re-roof survey · Detached house</span>
+                </div>
+                <span class="noti-time">now</span>
+              </div>
+
+              <div class="noti" data-delay="150">
+                <div class="noti-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="noti-body">
+                  <span class="noti-title">Missed call · £4,850</span>
+                  <span class="noti-sub">Flat roof replacement · Extension + garage</span>
+                </div>
+                <span class="noti-time">2m</span>
+              </div>
+
+              <div class="noti" data-delay="300">
+                <div class="noti-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="noti-body">
+                  <span class="noti-title">Missed call · £2,200</span>
+                  <span class="noti-sub">Storm damage repair · Ridge + leadwork</span>
+                </div>
+                <span class="noti-time">12m</span>
+              </div>
+
+              <div class="noti-more" id="notiMore">+ 4 more roofing enquiries missed today</div>
+            </div>
+
+            <div class="phone-unlock">
+              <div class="phone-home"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARALLAX ROOFLINE -->
+    <div class="hero-skyline" id="heroSkyline" aria-hidden="true">
+      <svg viewBox="0 0 1400 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+        <g class="building">
+          <path d="M0 200 L0 158 L95 126 L188 158 L188 200 Z" fill="#0f0f0f"/>
+          <path d="M70 158 L94 136 L118 158" stroke="#fbfaf7" stroke-opacity="0.08" stroke-width="2" fill="none"/>
+        </g>
+        <g class="building">
+          <path d="M170 200 L170 140 L280 104 L388 140 L388 200 Z" fill="#0f0f0f"/>
+          <rect x="270" y="140" width="18" height="60" fill="#fbfaf7" opacity="0.08"/>
+        </g>
+        <g class="building">
+          <path d="M360 200 L360 152 L430 122 L500 152 L500 200 Z" fill="#0f0f0f"/>
+          <rect x="408" y="108" width="10" height="30" fill="#0f0f0f"/>
+        </g>
+        <g class="building">
+          <line x1="560" y1="82" x2="624" y2="200" stroke="#0f0f0f" stroke-width="12" stroke-linecap="round"/>
+          <line x1="596" y1="82" x2="660" y2="200" stroke="#0f0f0f" stroke-width="12" stroke-linecap="round"/>
+          <line x1="576" y1="118" x2="631" y2="118" stroke="#0f0f0f" stroke-width="8" stroke-linecap="round"/>
+          <line x1="592" y1="150" x2="648" y2="150" stroke="#0f0f0f" stroke-width="8" stroke-linecap="round"/>
+        </g>
+        <g class="building">
+          <path d="M700 200 L700 132 L820 98 L938 132 L938 200 Z" fill="#0f0f0f"/>
+          <path d="M744 132 L820 108 L894 132" stroke="#fbfaf7" stroke-opacity="0.09" stroke-width="2" fill="none"/>
+        </g>
+        <g class="building">
+          <path d="M930 200 L930 150 L1020 120 L1112 150 L1112 200 Z" fill="#0f0f0f"/>
+          <rect x="1008" y="118" width="14" height="28" fill="#0f0f0f"/>
+        </g>
+        <g class="building">
+          <path d="M1090 200 L1090 145 L1175 112 L1260 145 L1260 200 Z" fill="#0f0f0f"/>
+          <rect x="1238" y="98" width="10" height="38" fill="#0f0f0f"/>
+          <circle cx="1243" cy="94" r="5" fill="#ff5a1f"/>
+        </g>
+        <g class="building">
+          <path d="M1238 200 L1238 166 L1316 140 L1396 166 L1396 200 Z" fill="#0f0f0f"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="item">Leak repairs</span>
+    <span class="item">Re-roof surveys</span>
+    <span class="item"><em>Flat roof replacements</em></span>
+    <span class="item">Leadwork</span>
+    <span class="item">Chimney flashing</span>
+    <span class="item"><em>Fascias & soffits</em></span>
+    <span class="item">Guttering</span>
+    <span class="item">Storm damage</span>
+    <span class="item"><em>Insurance callouts</em></span>
+    <span class="item">Roof surveys</span>
+    <span class="item">Leak repairs</span>
+    <span class="item">Re-roof surveys</span>
+    <span class="item"><em>Flat roof replacements</em></span>
+    <span class="item">Leadwork</span>
+    <span class="item">Chimney flashing</span>
+    <span class="item"><em>Fascias & soffits</em></span>
+    <span class="item">Guttering</span>
+    <span class="item">Storm damage</span>
+    <span class="item"><em>Insurance callouts</em></span>
+    <span class="item">Roof surveys</span>
+  </div>
+</div>
+
+<!-- ═══ PROBLEM ═══ -->
+<section class="problem">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num reveal">§ 01 &nbsp;/&nbsp; <strong>THE PROBLEM</strong></div>
+      <h2 class="section-title reveal-blur">Your best salesperson is <em>voicemail.</em> That's a problem.</h2>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-num counter reveal-left" data-target="34"><span class="val">0</span><span class="unit">%</span></div>
+      <div class="stat-copy">
+        <span class="tag reveal">Fact 01</span>
+        <h3 class="reveal-blur">A third of calls to roofing firms go unanswered.</h3>
+        <p class="reveal">You're halfway up a ladder, stripping back felt, pricing a re-roof, or driving between quotes. Your hands are full. The phone rings out - and three times out of ten, that caller never tries again.</p>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-num counter reveal-right" data-target="85"><span class="val">0</span><span class="unit">%</span></div>
+      <div class="stat-copy">
+        <span class="tag reveal">Fact 02</span>
+        <h3 class="reveal-blur">Up to 85% of voicemails go unanswered.</h3>
+        <p class="reveal">They hang up and they phone the next name on Google. Fifteen seconds, tops. By the time you're back at the van, the job's booked - with someone else.</p>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-num counter reveal-left" data-target="62400"><span class="unit">£</span><span class="val">0</span></div>
+      <div class="stat-copy">
+        <span class="tag reveal">Fact 03</span>
+        <h3 class="reveal-blur">The average roofer loses this every year.</h3>
+        <p class="reveal">A handful of missed calls a week is enough. One repair, one flat roof, one decent fascia-and-gutter job, one full re-roof enquiry - the numbers stack up quickly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ROOFING CAMPAIGN ═══ -->
+<section class="campaign">
+  <div class="container">
+    <div class="campaign-inner">
+      <div class="campaign-heading">
+        <div class="section-num reveal">§ 02 &nbsp;/&nbsp; <strong>WHY ROOFERS, WHY NOW</strong></div>
+        <h2 class="reveal-blur">We're only working with <em>50 roofing firms</em> this quarter.</h2>
+        <p class="reveal">
+          Rather than trying to be everything to everyone, we're going straight at roofing. This is an industry where the phone decides who gets the survey, who prices the re-roof, who catches the leak callout, and who wins the insurance-driven work. <strong>We're only taking on 50 roofing businesses.</strong> Once they're in, this round is shut.
+        </p>
+      </div>
+
+      <div class="campaign-facts">
+        <div class="cfact reveal-left">
+          <div class="cfact-num">50</div>
+          <div class="cfact-body">
+            <h3>Roofers only, this round.</h3>
+            <p>Domestic roofers, repair specialists, flat roof firms, fascia-and-gutter outfits, storm-response teams - the lot.</p>
+          </div>
+        </div>
+        <div class="cfact reveal-left">
+          <div class="cfact-num">£0</div>
+          <div class="cfact-body">
+            <h3>For the Roofing AI Audit. No catch.</h3>
+            <p>Fifteen minutes. You get a PDF showing what missed roofing calls are likely costing you, whether you sign up or not.</p>
+          </div>
+        </div>
+        <div class="cfact reveal-left">
+          <div class="cfact-num">½</div>
+          <div class="cfact-body">
+            <h3>Off the set-up fee.</h3>
+            <p>Anyone signing inside this window gets the set-up fee halved - before we go back to standard pricing.</p>
+          </div>
+        </div>
+        <div class="cfact reveal-left">
+          <div class="cfact-num">1 wk</div>
+          <div class="cfact-body">
+            <h3>From audit to live.</h3>
+            <p>We handle the build, scripts, routing and testing. You stay on the roof. Most roofing firms are live within a week.</p>
+          </div>
+        </div>
+
+        <div class="campaign-deadline reveal-scale">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div>
+            <div class="campaign-deadline-lbl">Closes</div>
+            <div class="campaign-deadline-val">30 June 2026 · or when the 50 spots are gone</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PULL QUOTE ═══ -->
+<section class="pullquote">
+  <blockquote class="reveal-words" id="pullQuote">
+    <span class="w">It</span> <span class="w">never</span> <span class="w">sleeps.</span> <span class="w">It</span> <span class="w">never</span> <span class="w">puts</span> <span class="w">the</span> <span class="w">kettle</span> <span class="w">on.</span> <span class="w">It</span> <span class="w"><em>never</em></span> <span class="w"><em>lets</em></span> <span class="w"><em>the</em></span> <span class="w"><em>phone</em></span> <span class="w"><em>ring</em></span> <span class="w"><em>out.</em></span>
+  </blockquote>
+  <cite class="reveal">§ How <strong>Blackline AI</strong> works, in one line.</cite>
+</section>
+
+<!-- ═══ SOLUTION ═══ -->
+<section class="solution">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num reveal">§ 03 &nbsp;/&nbsp; <strong>THE FIX</strong></div>
+      <h2 class="section-title reveal-blur">A receptionist that <em>never</em> lifts a tea bag.</h2>
+    </div>
+
+    <div class="solution-canvas">
+      <div class="solution-sticky reveal-scale">
+        <div class="phone-demo">
+          <div class="phone-demo-notch"></div>
+          <div class="phone-demo-header">
+            <div class="phone-demo-avatar">BL</div>
+            <div>
+              <div class="phone-demo-who">Blackline AI</div>
+              <div class="phone-demo-time" id="phoneTime">Live call · 00:12</div>
+            </div>
+            <div class="phone-demo-tag" id="phoneTag">● Active</div>
+          </div>
+          <div class="phone-demo-body">
+            <div class="phone-scene active" data-scene="0">
+              <div class="msg msg-in">Hi - is that Smith & Sons Roofing? We've got water coming in round the chimney breast and it's starting to mark the ceiling.</div>
+              <div class="msg msg-out">Yes, you've come through. Sorry to hear that - is it actively leaking now, or only when the rain gets heavy?</div>
+              <div class="msg msg-in">Only when it rains hard, but it's staining the ceiling in the back bedroom.</div>
+              <div class="msg msg-out">Right - that sounds like a genuine leak issue. I can get someone out today at 4, or tomorrow morning between 8 and 10 - what suits?</div>
+            </div>
+            <div class="phone-scene" data-scene="1">
+              <div class="msg msg-in">Can I book a survey for a full re-roof? It's a detached place and we want to get it priced properly this month.</div>
+              <div class="msg msg-out">No problem. I've got Tuesday at 9:30 or Thursday at 2 with the surveyor - which works better for the inspection?</div>
+              <div class="msg msg-in">Thursday works better.</div>
+              <div class="msg msg-out">Perfect - that's booked in. You'll get a confirmation text and he'll text when he's on the way.</div>
+            </div>
+            <div class="phone-scene" data-scene="2">
+              <div class="msg msg-in">Hi, is this the roofing team? We've had wind damage overnight and a few tiles have gone off the back pitch.</div>
+              <div class="msg msg-out">Yes - that sounds like one to get eyes on quickly. I'll put you straight through to the team now so they can sort the urgent site visit.</div>
+              <div class="msg msg-out">Transferring now - one sec.</div>
+            </div>
+            <div class="phone-scene" data-scene="3">
+              <div class="msg msg-in">Hi, just checking when the lads are coming back to finish the ridge line from last week's re-bed and point job.</div>
+              <div class="msg msg-out">No problem. I've logged it and sent the team a note - they'll give you a bell back within the hour. Anything else while I've got you?</div>
+              <div class="msg msg-in">No, that's all - cheers.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-steps">
+        <div class="step active reveal-right" data-step="0" role="button" tabindex="0" aria-pressed="true">
+          <div class="step-num">STEP 01 — ANSWERS</div>
+          <h3>Answered in one ring. <em>Every time.</em></h3>
+          <p>Storm season. Sunday morning. Mid-job on a Tuesday. Doesn't matter. The phone gets picked up in a natural voice that suits your business. No voicemail. No lost surveys. No high-ticket roofing enquiries slipping through the cracks.</p>
+        </div>
+        <div class="step reveal-right" data-step="1" role="button" tabindex="0" aria-pressed="false">
+          <div class="step-num">STEP 02 — BOOKS</div>
+          <h3>Books straight <em>into your diary.</em></h3>
+          <p>It knows when you're free, offers slots that actually work, confirms the survey or repair visit, and texts the customer. You just turn up to the address with the context already logged.</p>
+        </div>
+        <div class="step reveal-right" data-step="2" role="button" tabindex="0" aria-pressed="false">
+          <div class="step-num">STEP 03 — ESCALATES</div>
+          <h3>Passes the <em>big ones</em> to you.</h3>
+          <p>Emergency leak? Insurance job? Big re-roof? Landlord with multiple properties? Repeat customer? Your rules. It rings your mobile directly or fires a priority text. You stay in control of the serious money.</p>
+        </div>
+        <div class="step reveal-right" data-step="3" role="button" tabindex="0" aria-pressed="false">
+          <div class="step-num">STEP 04 — LOGS</div>
+          <h3>Texts you a full <em>summary</em> after every call.</h3>
+          <p>Name, number, postcode, roof issue, urgency, property type, whether it sounds like repair, survey, insurance or replacement work. Hits your phone the second they hang up. No scribbled notes. No forgotten callbacks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="mega-cta">
+  <div class="container">
+    <div class="cta-kicker reveal">§ 04 &nbsp;/&nbsp; THE AUDIT</div>
+    <h2 class="reveal-blur">15 minutes. One number. <em>Yours.</em></h2>
+    <p class="reveal">
+      Tell us how many calls you get, what a repair is worth, what a survey usually turns into, and how often the phone goes unanswered. We'll tell you - in pounds - what missed roofing calls are likely costing you every month.
+      If it doesn't stack up, we'll say so. No card on file. No contract. Just a straight Roofing AI Audit with numbers you can use.
+    </p>
+    <div class="cta-row reveal">
+      <a href="https://pages.pubhtml.com/tom-richman/2CtDQDhLhY" target="_blank" rel="noopener" class="btn">
+        <span class="lbl">Book my free Roofing AI Audit</span>
+        <span class="arr">↗</span>
+      </a>
+      <span class="hero-note">Or reply to the text you were sent.</span>
+    </div>
+
+    <div class="cta-facts">
+      <div class="reveal"><div class="cta-facts-num">15<em>min</em></div><div class="cta-facts-label">Average Roofing AI Audit. Most done in 10.</div></div>
+      <div class="reveal"><div class="cta-facts-num">£0</div><div class="cta-facts-label">Cost to you. We back ourselves.</div></div>
+      <div class="reveal"><div class="cta-facts-num">24<em>/7</em></div><div class="cta-facts-label">Hours the receptionist is on.</div></div>
+      <div class="reveal"><div class="cta-facts-num">1<em>wk</em></div><div class="cta-facts-label">From audit to being live.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num reveal">§ 05 &nbsp;/&nbsp; <strong>FAIR QUESTIONS</strong></div>
+      <h2 class="section-title reveal-blur">Before you ask - <em>probably, yes.</em></h2>
+    </div>
+
+    <div class="faq-list">
+      <details>
+        <summary>
+          <span class="faq-num">Q.01</span>
+          <span class="faq-q">Will my customers know they're talking to AI?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-a">Honestly, most don't clock it. The voice is natural, it handles the back-and-forth properly, and it can be tuned to sound more office-like or more direct depending on your brand. If you'd rather it introduced itself as an assistant up front - no bother, we set it up however suits.</div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="faq-num">Q.02</span>
+          <span class="faq-q">I'm useless with tech. Is this going to be a faff?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-a">We do the lot. You tell us what work you take on, your service area, your quoting process, and your calendar - we build it. Most roofing firms are live inside a week. No new phone, no new app, no laptop needed. The number can stay your existing mobile.</div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="faq-num">Q.03</span>
+          <span class="faq-q">What if it's an emergency, an insurer, or a proper re-roof lead?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-a">You set the rules. Anything over a set value, any emergency keyword, any insurer, landlord, repeat customer or full re-roof lead can ring your mobile direct or fire a priority text. You stay on the tools. Blackline handles the calls that do not need you, and flags the ones that do.</div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="faq-num">Q.04</span>
+          <span class="faq-q">What does it cost - and does it actually pay for itself?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-a">Depends how busy your phone is. On the Roofing AI Audit we'll show you the pound-for-pound numbers - what it costs, what you'd likely make back, and how many missed enquiries it takes to cover itself. If your numbers don't stack, we'll tell you straight and let you get on with your day.</div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="faq-num">Q.05</span>
+          <span class="faq-q">Can it actually tell the difference between a repair, a survey, and a tyre-kicker?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-a">Yes. It can handle the normal stuff roofers get all day - leaks, slipped tiles, guttering, fascias, insurance questions, booking surveys, chasing quotes, and customers trying to explain a problem badly. It can also follow your rules on what counts as worth booking, worth escalating, or worth politely filtering out. If something's unclear, it asks to clarify - same as a person would.</div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="faq-num">Q.06</span>
+          <span class="faq-q">Why 50 only? What happens after this round?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-a">We want to go deep, not wide. Fifty lets us give every roofing firm real attention - proper setup, real testing, and a direct line to the team. Once we close the cohort, the next window opens at standard pricing. This campaign is the only one with the half-price setup fee and the roofing-first rollout.</div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="faq-num">Q.07</span>
+          <span class="faq-q">What's the Roofing AI Audit actually like?</span>
+          <span class="faq-icon"></span>
+        </summary>
+        <div class="faq-a">15 minutes on the phone, or a Zoom if you'd rather. We ask about your call volume, your average repair value, what a survey normally turns into, your service area, and how you currently handle missed calls. We run the numbers and send you a one-page PDF showing what missed roofing enquiries are likely costing you. Yours to keep, whether you work with us or not.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-addr">
+        Built for roofing firms.<br>
+        <em>Answered by Blackline AI.</em><br>
+        Somewhere between the scaffold, the survey, and the next big quote.
+      </div>
+      <div class="footer-links">
+        <a href="https://pages.pubhtml.com/tom-richman/2CtDQDhLhY" target="_blank" rel="noopener">Book the audit</a>
+        <a href="#">Contact the team</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Blackline AI · All rights, rightly reserved.</div>
+      <div>Filed 04.2026 · Roofing campaign</div>
+    </div>
+  </div>
+
+  <div class="footer-skyline" aria-hidden="true">
+    <svg viewBox="0 0 1400 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+      <g fill="#ff5a1f">
+        <rect x="0" y="80" width="110" height="40"/>
+        <polygon points="128,72 150,48 172,72 172,120 128,120"/>
+        <rect x="146" y="82" width="8" height="12" fill="#fbfaf7" opacity="0.12"/>
+        <rect x="190" y="55" width="60" height="65"/>
+        <rect x="350" y="30" width="20" height="90"/>
+        <rect x="344" y="15" width="32" height="15"/>
+        <polygon points="362,19 500,19 500,27 362,27"/>
+        <rect x="320" y="17" width="22" height="12"/>
+        <path d="M560 120 Q 560 70 620 68 Q 680 70 680 120 Z"/>
+        <line x1="715" y1="55" x2="735" y2="120" stroke="#ff5a1f" stroke-width="3"/>
+        <rect x="770" y="60" width="50" height="60"/>
+        <rect x="860" y="10" width="8" height="110"/>
+        <circle cx="864" cy="5" r="5" fill="#faf8f3"/>
+        <polygon points="890,55 930,42 970,55 970,120 890,120"/>
+        <rect x="1000" y="65" width="150" height="55"/>
+        <polygon points="1000,65 1030,50 1060,65"/>
+        <polygon points="1060,65 1090,50 1120,65"/>
+        <rect x="1180" y="40" width="60" height="80"/>
+        <rect x="1270" y="85" width="130" height="35"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="footer-huge" aria-hidden="true">Blackline <em>AI</em></div>
+</footer>
+
+<script>
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const supportsIO = 'IntersectionObserver' in window;
+
+  /* Preloader */
+  const finishLoad = () => {
+    const preloader = document.getElementById('preloader');
+    window.setTimeout(() => {
+      if (preloader) preloader.classList.add('gone');
+      document.body.classList.add('loaded');
+      window.setTimeout(() => {
+        document.body.classList.add('headline-settled');
+      }, reduce ? 0 : 1700);
+    }, reduce ? 0 : 900);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', finishLoad, { once: true });
+  } else {
+    finishLoad();
+  }
+
+  /* Scroll progress */
+  const progress = document.getElementById('scrollProgress');
+  const updateProgress = () => {
+    if (!progress) return;
+    const h = document.documentElement;
+    const maxScroll = h.scrollHeight - h.clientHeight;
+    const scrolled = maxScroll > 0 ? h.scrollTop / maxScroll : 0;
+    progress.style.width = (scrolled * 100) + '%';
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress, { passive: true });
+  updateProgress();
+
+  /* Nav scroll */
+  const nav = document.getElementById('nav');
+  const onNavScroll = () => {
+    if (nav) nav.classList.toggle('scrolled', window.scrollY > 10);
+  };
+  window.addEventListener('scroll', onNavScroll, { passive: true });
+  onNavScroll();
+
+  /* Parallax skyline */
+  const skyline = document.getElementById('heroSkyline');
+  if (skyline && !reduce) {
+    let ticking = false;
+    const parallax = () => {
+      const y = window.scrollY;
+      skyline.style.transform = `translate3d(0, ${y * 0.35}px, 0)`;
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(parallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* Headline rotator — refined, smooth cross-fade */
+  const words = [
+    'up a ladder.',
+    'stripping back felt.',
+    'in the van.',
+    'pricing a re-roof.',
+    'on a survey.',
+    'mid-callout.'
+  ];
+  const rot = document.getElementById('rotator');
+  if (rot && !reduce) {
+    let i = 0;
+    window.setInterval(() => {
+      rot.style.opacity = '0';
+      rot.style.transform = 'translateY(-14px)';
+      window.setTimeout(() => {
+        i = (i + 1) % words.length;
+        rot.textContent = words[i];
+        rot.style.transition = 'none';
+        rot.style.transform = 'translateY(14px)';
+        void rot.offsetWidth;
+        rot.style.transition = 'opacity 0.45s ease, transform 0.45s cubic-bezier(0.2, 0.85, 0.15, 1)';
+        rot.style.opacity = '1';
+        rot.style.transform = 'translateY(0)';
+      }, 450);
+    }, 2800);
+  }
+
+  /* Notification cascade — on phone entering view */
+  const notis = document.querySelectorAll('.noti');
+  const notiMore = document.getElementById('notiMore');
+  const notiStack = document.getElementById('notiStack');
+  const phoneStage = document.querySelector('.phone-stage');
+  const triggerPhoneBuzz = () => {
+    if (!phoneStage || reduce) return;
+    phoneStage.classList.remove('buzzing');
+    void phoneStage.offsetWidth;
+    phoneStage.classList.add('buzzing');
+    window.setTimeout(() => {
+      phoneStage.classList.remove('buzzing');
+    }, 980);
+  };
+  const startPhoneBuzzLoop = () => {
+    if (!phoneStage || reduce || phoneStage.dataset.buzzStarted === 'true') return;
+    phoneStage.dataset.buzzStarted = 'true';
+    const scheduleBuzz = () => {
+      const delay = 3200 + Math.random() * 1600;
+      window.setTimeout(() => {
+        if (document.visibilityState === 'visible') triggerPhoneBuzz();
+        scheduleBuzz();
+      }, delay);
+    };
+    window.setTimeout(triggerPhoneBuzz, 900);
+    scheduleBuzz();
+  };
+  const showNotifications = () => {
+    notis.forEach((n, i) => {
+      window.setTimeout(() => n.classList.add('visible'), 200 + i * 180);
+    });
+    window.setTimeout(() => {
+      if (notiMore) notiMore.classList.add('visible');
+    }, 200 + notis.length * 180 + 200);
+    startPhoneBuzzLoop();
+  };
+
+  if (notiStack) {
+    if (supportsIO) {
+      const notiIO = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            showNotifications();
+            notiIO.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      notiIO.observe(notiStack);
+    } else {
+      showNotifications();
+    }
+  }
+
+  /* Reveal on scroll */
+  const revealTargets = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-blur, .reveal-words, .reveal-line');
+  if (supportsIO) {
+    const revealIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          revealIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealTargets.forEach((el) => revealIO.observe(el));
+  } else {
+    revealTargets.forEach((el) => el.classList.add('in'));
+  }
+
+  /* Word-by-word stagger for pull quote */
+  const pullQuote = document.getElementById('pullQuote');
+  if (pullQuote) {
+    pullQuote.querySelectorAll('.w').forEach((w, i) => {
+      w.style.transitionDelay = (0.04 * i) + 's';
+    });
+  }
+
+  /* Stagger children reveals */
+  document.querySelectorAll('.stat-copy').forEach((group) => {
+    const children = group.querySelectorAll('.reveal, .reveal-blur');
+    children.forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
+  });
+  document.querySelectorAll('.cta-facts').forEach((group) => {
+    const children = group.querySelectorAll('.reveal');
+    children.forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
+  });
+  document.querySelectorAll('.campaign-facts').forEach((group) => {
+    const children = group.querySelectorAll('.reveal-left');
+    children.forEach((el, i) => { el.style.transitionDelay = (i * 0.09) + 's'; });
+  });
+  /* Stagger solution steps */
+  document.querySelectorAll('.solution-steps .reveal-right').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.09) + 's';
+  });
+
+  /* Mega CTA section scroll motion */
+  const megaCta = document.querySelector('.mega-cta');
+  const updateMegaCtaMotion = () => {
+    if (!megaCta || reduce) return;
+    const rect = megaCta.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const centerOffset = (rect.top + rect.height * 0.5) - (vh * 0.52);
+    const normalised = Math.max(-1, Math.min(1, centerOffset / vh));
+    megaCta.style.setProperty('--cta-drift', `${normalised * -22}px`);
+    megaCta.style.setProperty('--cta-glow-shift', `${normalised * -54}px`);
+  };
+  if (megaCta) {
+    if (supportsIO) {
+      const ctaIO = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) megaCta.classList.add('in');
+        });
+      }, { threshold: 0.2 });
+      ctaIO.observe(megaCta);
+    } else {
+      megaCta.classList.add('in');
+    }
+
+    if (!reduce) {
+      let ctaTicking = false;
+      const handleMegaCtaScroll = () => {
+        if (!ctaTicking) {
+          requestAnimationFrame(() => {
+            updateMegaCtaMotion();
+            ctaTicking = false;
+          });
+          ctaTicking = true;
+        }
+      };
+      window.addEventListener('scroll', handleMegaCtaScroll, { passive: true });
+      window.addEventListener('resize', handleMegaCtaScroll, { passive: true });
+      updateMegaCtaMotion();
+    }
+  }
+
+  /* Counter animations */
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+  const formatInt = (n) => Math.floor(n).toLocaleString('en-GB');
+  const setCounterValue = (el, target) => {
+    const val = el.querySelector('.val');
+    if (!val) return;
+    val.textContent = target >= 1000 ? formatInt(target) : target;
+  };
+
+  const animateCounter = (el) => {
+    const target = parseFloat(el.dataset.target);
+    const val = el.querySelector('.val');
+    if (!val || Number.isNaN(target)) return;
+    const dur = 2200;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - start) / dur, 1);
+      const eased = easeOutCubic(t);
+      const current = target * eased;
+      val.textContent = target >= 1000 ? formatInt(current) : Math.floor(current);
+      if (t < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        setCounterValue(el, target);
+      }
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const counters = document.querySelectorAll('.stat-num.counter');
+  if (supportsIO) {
+    const counterIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          animateCounter(e.target);
+          counterIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach((el) => counterIO.observe(el));
+  } else {
+    counters.forEach((el) => {
+      el.classList.add('in');
+      setCounterValue(el, parseFloat(el.dataset.target));
+    });
+  }
+
+  /* Sticky solution scene sync */
+  const steps = document.querySelectorAll('.step');
+  const scenes = document.querySelectorAll('.phone-scene');
+  const times = ['Live call · 00:12', 'Live call · 00:34', 'Live call · 00:08', 'Live call · 00:21'];
+  const tags = ['● Active', '● Active', '● Transfer', '● Active'];
+  const phoneTime = document.getElementById('phoneTime');
+  const phoneTag = document.getElementById('phoneTag');
+
+  const setScene = (n) => {
+    scenes.forEach((s, i) => s.classList.toggle('active', i === n));
+    steps.forEach((s, i) => {
+      const isActive = i === n;
+      s.classList.toggle('active', isActive);
+      s.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+    if (phoneTime) phoneTime.textContent = times[n] || times[0];
+    if (phoneTag) phoneTag.textContent = tags[n] || tags[0];
+  };
+
+  steps.forEach((step, i) => {
+    step.addEventListener('mouseenter', () => setScene(i));
+    step.addEventListener('click', () => setScene(i));
+    step.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setScene(i);
+      }
+    });
+  });
+
+  if (supportsIO) {
+    const stepIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const stepIndex = parseInt(e.target.dataset.step, 10);
+        if (e.isIntersecting && e.intersectionRatio > 0.55 && !Number.isNaN(stepIndex)) {
+          setScene(stepIndex);
+        }
+      });
+    }, { threshold: [0.55], rootMargin: '-25% 0px -25% 0px' });
+    steps.forEach((s) => stepIO.observe(s));
+  } else {
+    setScene(0);
+  }
+})();
+</script>
+
+</body>
+</html>
